@@ -79,11 +79,16 @@ namespace textbasedgame
                 Console.WriteLine("def - your mitigation stat will be displayed.");
                 Console.WriteLine("continue - you will continue to the game.");
 
+                string command = Console.ReadLine(); ////changes
+                bool commandInput = true;
+                if (command == "continue")
+                    {
+                       commandInput = false;
+                    }
 
-
-                while (true)
+                while (commandInput == true)
                 {
-                    string command = Console.ReadLine();
+                    command = Console.ReadLine(); //// to here
                     if (command == "stats")
                     {
                         Console.WriteLine(userCharacter.Health);
@@ -167,8 +172,8 @@ namespace textbasedgame
                             Console.WriteLine("What will you do?");
                         }
                     }
-                }
-            }
+                }                  
+            }   
         }
     }
 }
