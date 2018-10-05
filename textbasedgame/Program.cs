@@ -75,10 +75,17 @@ namespace textbasedgame
                 Console.WriteLine("type in character to access stats screen or continue to play the game.");
                 string command = Console.ReadLine(); ////changes
                 bool commandInput = true;
-                if (command == "continue" && command != "character" && command != "stats" && command != "hp" && command != "dmg" && command != "def")
+                if (command == "continue")
                     {
                        commandInput = false;
                     }
+                while (command != "character" && commandInput == true)
+                    {
+                        Console.WriteLine("Invalid Selection Please retry!");
+                        command = Console.ReadLine();
+                        commandInput = true;
+
+                    }                                           
 
                 while (commandInput == true)
                 {
@@ -148,15 +155,16 @@ namespace textbasedgame
                             if (roomCommand != "run" && roomCommand != "fight" && roomCommand != "sneak" && roomCommand != "playdead" && roomCommand != "examine")
                                 {
                                     roomCommandInput = false;
-                                }
-
+                                }                           
+                                                            
                             while (roomCommandInput == false)
                                 {
                                     Console.WriteLine("That's not a valid option!");    
                                     roomCommand = Console.ReadLine();
                                     roomCommandInput = true;
                                 }
-
+                            while (roomCommandInput == true)
+                            {
 
                             if (roomCommand == "examine")
                             {
@@ -166,7 +174,8 @@ namespace textbasedgame
                                 Console.WriteLine(newMonster.Mitigation);
                                 roomCommand = Console.ReadLine();
                                 roomCommandInput = true;
-                            }                           
+                            } 
+                            }
                         }
 
                         if (encounterType == 2)
