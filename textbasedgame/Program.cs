@@ -72,24 +72,26 @@ namespace textbasedgame
                 }
 
 
-                Console.WriteLine("Please enter command:");
-                Console.WriteLine("stats - your stats will be displayed.");
-                Console.WriteLine("hp - your health will be displayed.");
-                Console.WriteLine("dmg - your damage stat will be displayed.");
-                Console.WriteLine("def - your mitigation stat will be displayed.");
-                Console.WriteLine("continue - you will continue to the game.");
-
+                Console.WriteLine("type in character to access stats screen or continue to play the game.");
                 string command = Console.ReadLine(); ////changes
                 bool commandInput = true;
-                if (command == "continue")
+                if (command == "continue" && command != "character" && command != "stats" && command != "hp" && command != "dmg" && command != "def")
                     {
                        commandInput = false;
                     }
 
                 while (commandInput == true)
                 {
+                    Console.WriteLine("Please enter command:");
+                    Console.WriteLine("stats - your stats will be displayed.");
+                    Console.WriteLine("hp - your health will be displayed.");
+                    Console.WriteLine("dmg - your damage stat will be displayed.");
+                    Console.WriteLine("def - your mitigation stat will be displayed.");
+                    Console.WriteLine("continue - you will continue to the game.");
                     command = Console.ReadLine(); //// to here
-                    if (command == "stats")
+                    commandInput = true;
+                    
+                        if (command == "stats")
                     {
                         Console.WriteLine(userCharacter.Health);
                         Console.WriteLine(userCharacter.Damage);
@@ -140,18 +142,31 @@ namespace textbasedgame
                             Console.WriteLine("Oh no there is a spooky monster! It's a " + newMonster.Name);
                             Console.WriteLine("What will you do?");
                             Console.WriteLine("Run Fight Sneak Playdead Examine");
-                            command = Console.ReadLine();
-                            if (command == "Examine")
+                            string roomCommand = Console.ReadLine();
+                            bool roomCommandInput = true;
+                            
+                            if (roomCommand != "run" && roomCommand != "fight" && roomCommand != "sneak" && roomCommand != "playdead" && roomCommand != "examine")
+                                {
+                                    roomCommandInput = false;
+                                }
+
+                            while (roomCommandInput == false)
+                                {
+                                    Console.WriteLine("That's not a valid option!");    
+                                    roomCommand = Console.ReadLine();
+                                    roomCommandInput = true;
+                                }
+
+
+                            if (roomCommand == "examine")
                             {
                                 Console.WriteLine(newMonster.Name);
                                 Console.WriteLine(newMonster.Health);
                                 Console.WriteLine(newMonster.Damage);
                                 Console.WriteLine(newMonster.Mitigation);
-                            }
-                            else
-                            {
-                                command = Console.ReadLine();
-                            }
+                                roomCommand = Console.ReadLine();
+                                roomCommandInput = true;
+                            }                           
                         }
 
                         if (encounterType == 2)
