@@ -12,7 +12,7 @@ namespace textbasedgame
         {
             public string Name;
             public int Health; // delcaring variables
-            public int Damage;
+            public int Damage; //if you see this the test is successful
             public int Mitigation;
             public Character(string givenName, int givenHealth, int givenDamage, int givenMitigation)
             {
